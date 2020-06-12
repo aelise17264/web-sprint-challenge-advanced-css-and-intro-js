@@ -229,27 +229,23 @@ console.log(fixName(artists, 8, 'Vincent Van Gogh'));
  * For example, if getArtistByIndex is invoked with the artists dataset and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(array, index) {
+function getArtistByIndex(arr, index) {
     
-    return `This artist at index ${index} is ${name}`
+    return `This artist at index ${index} is ${arr[index].name}`
   }
   
   console.log(getArtistByIndex(artists, 0,));
 
 
-//*Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who lived in the 20th century (1900-2000) 
-;
+//*Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who lived in the 20th century (1900-2000);
  
-let array20Century = []
-
-function get20s(arr){
-  for (i = 0; i < arr.length; i++){
-    if(arr[i].years === '1900-2000') {
-      array20Century.push(arr[i])      
-    }
-}
-}
-console.log(get20s(artists));
+function get20s(arr, string){
+  for (i = 0; i < arr.length; i++)
+  if (arr[i].years = string){
+    return arr[i];
+  }
+  } 
+console.log(get20s(artists, '1900 - 2000'));
 
 /* Task 5: Create a function called `removeArtist` that takes two arguments:
  *     (1) artists array
@@ -263,14 +259,22 @@ console.log(get20s(artists));
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously 
  * remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(arr, index) {
-    return 
+function cloneList(arr){
+  let newList = [];
+  for (i = 0; i < arr.length; i++)
+  newList.push(arr[i]);
+  return newList;
+}
+console.log(cloneList(artists));
+
+
+function removeArtist(arr) {
+   for (i = 0; i < arr.length; i++)
+  arr[i].name = arr[i].name.length;
+  return arr;
   }
   
-  console.log(removeArtist(artists, 0))
-
-
-
+  console.log(removeArtist(artists));
 
 /* Task 6: Create a function called `addArtist` that can accept an array of information and add it to the 
 artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
@@ -284,20 +288,14 @@ nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) 
 
 At the end, this function should console.log() the new array with information added"*/
-//let newArtist = {[]};
+//
 
-/*function addArtist(arr){
-
-  return  arr.push({id: 21},
-    {name: Anna Brander}, 
-    {years: 1991 - present},
-    {genre: Web Design}, 
-    {nationality: American},
-    {bio: bio to fill in lorem ipsum})
-  
+function addArtist(arr, id, name, years, genre, nationality, bio){
+    arr.push({id, name,  years, genre, nationality, bio})
+  return arr
   }
 
-  console.log(addArtist(artists));
+  console.log(addArtist(artists, 21, "Anna Brander", "1991 - present", "Web Design", "American", "born in Pennsylvania, went to Geneva College, moved to Colorado in 2015, got married December 2019"));
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -307,13 +305,14 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
+let listOfNames = []
 function lotsOfArt(arr){
-for (i = 0; i < arr.length; i++)
-  return arr[name];
+  for (i = 0; i < arr.length; i++)
+  listOfNames.push(arr[i].name);
+  return listOfNames;
 
 }
-
-console.log(lotsOfArt(artists))
+console.log(lotsOfArt(cloneList))
 
 // 🎨🎨 STRETCH 🎨🎨//
 
